@@ -1,0 +1,42 @@
+function array() {
+  // Внутрішній масив для зберігання даних
+  const arr = [];
+  
+  // Функціональний об'єкт з методами
+  const arrayObj = function(index) {
+    // Отримання елемента по індексу
+    return arr[index];
+  };
+  
+  // Метод додавання елемента
+  arrayObj.push = function(value) {
+    arr.push(value);
+    return arrayObj;
+  };
+  
+  // Метод видалення та отримання останнього елемента
+  arrayObj.pop = function() {
+    return arr.pop();
+  };
+  
+  return arrayObj;
+}
+
+// Тести для array
+console.log('\n=== Тести для array ===');
+
+const arr = array();
+
+arr.push('first');
+arr.push('second');
+arr.push('third');
+
+console.log(arr(0)); // Виводить: first
+console.log(arr(1)); // Виводить: second
+console.log(arr(2)); // Виводить: third
+
+console.log(arr.pop()); // Виводить: third
+console.log(arr.pop()); // Виводить: second
+console.log(arr.pop()); // Виводить: first
+
+console.log(arr.pop()); // Виводить: undefined
